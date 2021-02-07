@@ -18,6 +18,47 @@
       echo 'Could not select database, big problem';
       exit;
     }
+   
+    function get_left_bundle($link){ 
+
+        $sql = "select title1, url1, img1 from bvid limit 1;";
+        $res = mysqli_query($link, $sql);
+    
+        if (!$res){
+          echo "DB Error, could not query the database\nMySQL Error:";
+          echo mysqli_error();
+          #exit();
+        }
+        #$url1 = '';
+        while ($result = mysqli_fetch_assoc($res)){
+            $title1 = $result["title1"];
+            $url1 = $result["url1"];
+            $img1 = $result["img1"];
+        }
+        $html_payload = "<h3>" . $title1 . "</h3>";
+        $html_payload .= '<a href="' . $url1 . '">' . $url1 . '</a><br><br>';
+        $html_payload .= '<img border=2 src="images/' . $img1  . '" width=600 /><br>';
+
+        return $html_payload;
+    }
+
+    function get_url1($link){ 
+        $sql = "select distinct url1 from bvid limit 1;";
+        $res = mysqli_query($link, $sql);
+    
+        if (!$res){
+          echo "DB Error, could not query the database\nMySQL Error:";
+          echo mysqli_error();
+          #exit();
+        }
+        #$url1 = '';
+        while ($result = mysqli_fetch_assoc($res)){
+            $url1 = $result["url1"];
+        }
+        return $url1;
+    }
+
+
 ?>
 
 <br><br><br>
@@ -26,27 +67,10 @@
 
 <h1 align=center>Which youtube link is better?</h1>
 
-  <?php
-    $sql = "select distinct url1 from bvid limit 1;";
-    $res = mysqli_query($link, $sql);
-
-    if (!$res){
-      echo "DB Error, could not query the database\n";
-      echo 'MySQL Error: ' . mysqli_error();
-    }
-
-    while ($result = mysqli_fetch_assoc($res)){
-      $url1 = $result["url1"];
-      echo $url1;
-    }
-  ?>
-
-
 <table border=1><tr><td>
 
-<h3>Fransis Derelle & CRaymak - Ember (feat. HVDES)</h3>
-<a href="https://www.youtube.com/watch?v=GsMnt_-f_8M">https://www.youtube.com/watch?v=GsMnt_-f_8M</a><br><br>
-<img border=2 src="images/ember.jpg" width=500 /><br>
+<?php echo get_left_bundle($link); ?>
+
 <br>
 <br>
 

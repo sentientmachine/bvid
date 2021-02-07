@@ -10,7 +10,7 @@
 
 cp -r /home/el/bin/bvid/index.php /mnt/machinesentience/public_html/bvid/index.php
 #cp -r /home/el/bin/bvid/images/ember.jpg /mnt/machinesentience/public_html/bvid/images/ember.jpg
-cp -r /home/el/bin/bvid/images/universe_is_alive.jpg /mnt/machinesentience/public_html/bvid/images/universe_is_alive.jpg
+#cp -r /home/el/bin/bvid/images/universe_is_alive.jpg /mnt/machinesentience/public_html/bvid/images/universe_is_alive.jpg
 
 
 echo "done"
