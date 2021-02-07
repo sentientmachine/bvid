@@ -84,9 +84,11 @@
 <br>
 
 Submit a youtube url:<br>
-<br>
+
 <form name="submit_url_form" action="post_submiturl.php" method="post">
-    <input size=100 type="text" name="url_text" value=''>
+    <input size=100 type="text" name="title" value=''><br>
+    <input size=100 type="text" name="url_text" value=''><br>
+    <input size=100 type="text" name="img_name" value=''><br>
     <input type="submit" class="button" name="submiturl" value="SubmitUrl"/>
 </form>
 

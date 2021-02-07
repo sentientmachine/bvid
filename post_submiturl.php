@@ -19,63 +19,49 @@
 
     $mysql = array();
 
-    $mysql['url_text1'] = $_POST['url_text1'];
-    $mysql['url_text2'] = $_POST['url_text2'];
+    //$mysql['title1'] = $_POST['title1'];
+    //$mysql['title2'] = $_POST['title2'];
+    //$mysql['url1'] = $_POST['url1'];
+    //$mysql['url2'] = $_POST['url2'];
+    //$mysql['img1'] = $_POST['img1'];
+    //$mysql['img2'] = $_POST['img2'];
   
     #TODO: confirm that the URL is not already submitted
     #TODO: do a basic sniff test to see if the youtube url is valid.
+
     #TODO: fetch the youtube image and download it into the /images/ folder
+
     #TODO: Pick another URL from our list (randomly at first, later one with bias toward the top)
-    #TODO: Insert it into the database then refresh the page.
+    
+    
+    $mysql['title'] = $_POST['title'];
+    $mysql['url_text'] = $_POST['url_text'];
+    $mysql['img_name'] = $_POST['img_name'];
 
+    $sql = "select title2, url2, img2 from bvid order by RAND() limit 1;";
+    $res = mysqli_query($link, $sql);
 
+    if (!$res){
+      echo "DB Error, could not query the database\nMySQL Error:";
+      echo mysqli_error(); exit();
+    }
+    while ($result = mysqli_fetch_assoc($res)){
+        $title2 = $result["title2"];
+        $url2 = $result["url2"];
+        $img2 = $result["img2"];
+    }
 
-    #The two urls handed to us might not be in the bvid table because the arrangement is brand new.
-    #and if so, that means we need to insert it.
+    $sql = "insert into bvid values ( " . 
+           "'" . $mysql['title'] . "', " .
+           "'" . $mysql['url_text'] . "', " .
+           "'" . $mysql['img_name'] . "', " .
+           "'" . $title2 . "', " .
+           "'" . $url2 . "', " .
+           "'" . $img2 . "', 1); ";
 
-    //$sql = "select url1 from bvid " . 
-    //       "where url1 = '" . $mysql['url_text1'] . "' and url2 = '" . $mysql['url_text2'] . "';";
-    //
-    //$res = mysqli_query($link, $sql);
-    //
-    //if (!$res) {
-    //  echo "DB Error, could not query the database\n";
-    //  echo 'MySQL Error: ' . mysqli_error();
-    //  exit();
-    //}
-    ////$result = mysqli_query($link, $sql);
-    //// Get the result of query named cnt
-    ////$question_count = mysqli_result($result, 0);
-    ////print("question_count: '" . $question_count. "'");
-    //
-    //$result_set_to_get_count = mysqli_query($link, $sql);
-    //$question_count = mysqli_num_rows($result_set_to_get_count);
-    ////print("question_count: '" . $question_count. "'");
-    //
-    //if ($question_count > 0){
-    //    //$sql = "update bvid set votes = votes+1 where 1=1";
-    //    $sql = "update bvid set votes = votes+1 " .
-    //           "where url1 = '" . $mysql['url_text1'] . "' and url2 = '" . $mysql['url_text2'] . "';";
-    //
-    //    mysqli_query($link, $sql);
-    //}
-    //else{
-    //    #TODO:
-    //
-    //    $sql = "insert into bvid values ( " . 
-    //           "'The Living Universe - Documentary about Consciousness and Reality | Waking Cosmos', " .
-    //           "'https://www.youtube.com/watch?v=WSDnRbxGlFw', " .
-    //           "'universe_is_alive.jpg', " .
-    //           "'Fransis Derelle & CRaymak - Ember (feat. HVDES)', " .
-    //           "'https://www.youtube.com/watch?v=HD4WthE414k', " .
-    //           "'ember.jpg', 1); ";
-    //
-    //    //$sql = "insert into bvid  " .
-    //    //       "where url1 = '" . $mysql['url_text1'] . "' and url2 = '" . $mysql['url_text2'] . "';";
-    //
-    //    mysqli_query($link, $sql);
-    //
-    //}
+    mysqli_query($link, $sql);
+
+    #Eric you can use this to make 10 million dollars and give it to the architect that made physics.
 
     #when done go back to index.php
     echo "<script type='text/javascript'> document.location = 'index.php';</script>";
