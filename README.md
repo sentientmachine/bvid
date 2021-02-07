@@ -35,3 +35,26 @@ space with time.
 
 https://www.youtube.com/watch?v=UwsrzCVZAb8
 
+# Implementation details:
+
+1.  I want to minimize computation and distance so this should be as close to a raw html file as possible.
+2.  I can make an index.html and stub out something I'd like there.  But where's the db call?
+
+I could put the entire thing as raw javascript and json right on the linux file system...
+
+Button should communicate: "This video is better, Show me more like this". but with fewer words.
+
+Two html tables border 2, 500 px width
+Two buttons under the page to refresh.
+
+Which means I need some kind of model view controller. 
+
+PHP is not-terrible, at least that's the one I have most experience with.
+
+less thinking more coding.  get index.php running.
+
+
+
+
+
+
