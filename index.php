@@ -19,9 +19,9 @@
       exit;
     }
    
-    function get_left_bundle($link){ 
+    function get_bundle($link){ 
 
-        $sql = "select title1, url1, img1 from bvid limit 1;";
+        $sql = "select title1, url1, img1, title2, url2, img2 from bvid limit 1;";
         $res = mysqli_query($link, $sql);
     
         if (!$res){
@@ -34,11 +34,26 @@
             $title1 = $result["title1"];
             $url1 = $result["url1"];
             $img1 = $result["img1"];
+            $title2 = $result["title2"];
+            $url2 = $result["url2"];
+            $img2 = $result["img2"];
         }
-        $html_payload = "<h3>" . $title1 . "</h3>";
+
+        $html_payload = '<table border=1><tr><td>';
+        $html_payload .= "<h3>" . $title1 . "</h3>";
         $html_payload .= '<a href="' . $url1 . '">' . $url1 . '</a><br><br>';
         $html_payload .= '<img border=2 src="images/' . $img1  . '" width=600 /><br>';
+        $html_payload .= '<div align=center><input type="submit" class="button" name="url1" value="This one"/></div><br>';
+        $html_payload .= '<br>';
 
+        $html_payload .= '</td><td>';
+
+        $html_payload .= "<h3>" . $title2 . "</h3>";
+        $html_payload .= '<a href="' . $url2 . '">' . $url2 . '</a><br><br>';
+        $html_payload .= '<img border=2 src="images/' . $img2  . '" width=600 /><br>';
+        $html_payload .= '<div align=center><input type="submit" class="button" name="url1" value="This one"/></div><br>';
+        $html_payload .= '<br>';
+        $html_payload .= '</td></tr></table>';
         return $html_payload;
     }
 
@@ -67,22 +82,7 @@
 
 <h1 align=center>Which youtube link is better?</h1>
 
-<table border=1><tr><td>
-
-<?php echo get_left_bundle($link); ?>
-
-<br>
-<br>
-
-<div align=center><input type="submit" class="button" name="url1" value="This one" /></div><br>
-</td><td>
-
-<h3>The Living Universe - Documentary about Consciousness and Reality | Waking Cosmos</h3>
-<a href="https://www.youtube.com/watch?v=HD4WthE414k">https://www.youtube.com/watch?v=HD4WthE414k</a><br><br>
-<img border=2 src="images/universe_is_alive.jpg" width=500 /><br>
-<br>
-<div align=center><input type="submit" class="button" name="url1" value="This one" /></div><br>
-</td></tr></table>
+<?php echo get_bundle($link); ?>
 
 <br>
 <br>
