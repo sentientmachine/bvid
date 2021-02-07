@@ -9,7 +9,8 @@ select * from yar;
 select * from speed_learn_questions limit 50;
 
 
-select * from bvid;
+select distinct url1 from bvid limit 1;
+
 
 create table bvid(
     title1 varchar(600), 
