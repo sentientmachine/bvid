@@ -1,16 +1,14 @@
 
 
-Running <leader>sel here should magically connect to the machinesentience mysql database
+#now make it super easy for me to just paste in a URL, and have server side do everything else.
+
+#now the button should do an insert.
+
 
 show tables
 
-select * from yar;
-
-select * from speed_learn_questions limit 50;
-
-
-select distinct url1 from bvid limit 1;
-
+select url1, votes from bvid
+select * from bvid
 
 create table bvid(
     title1 varchar(600), 
