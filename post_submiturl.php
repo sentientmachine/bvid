@@ -26,17 +26,32 @@
     //$mysql['img1'] = $_POST['img1'];
     //$mysql['img2'] = $_POST['img2'];
   
-    #TODO: confirm that the URL is not already submitted
-    #TODO: do a basic sniff test to see if the youtube url is valid.
-
-    #TODO: fetch the youtube image and download it into the /images/ folder
-
-    #TODO: Pick another URL from our list (randomly at first, later one with bias toward the top)
     
     
     $mysql['title'] = $_POST['title'];
     $mysql['url_text'] = $_POST['url_text'];
     $mysql['img_name'] = $_POST['img_name'];
+
+
+    #TODO: confirm that the URL is not already submitted
+    #TODO: Do a basic sniff test to see if the youtube url is valid.
+
+    #TODO: use regex to pluck out the 11 alphanumeric character sequence code from $mysql['url_text'] like uIMfbWnpeU0
+    $alphanumeric_id = 
+
+    #TODO: get the youtube title using this strategy:
+    $content = file_get_contents("http://youtube.com/get_video_info?video_id=". $alphanumeric_id);
+    parse_str($content, $ytarr);
+    echo $ytarr['title'];
+
+
+    #TODO: Fetch the youtube image by creating this URL: 'http://i3.ytimg.com/vi/uIMfbWnpeU0/maxresdefault.jpg'
+
+    #TODO: Use wget or curl on machinesentience to yank, it'll be named 'maxresdefault.jpg' make sure to throttle
+
+    #TODO: Take the title text, and convert everything that isn't a-zA-Z0-9_ to those.
+
+    #stuff it all in there, should all just workj
 
     $sql = "select title2, url2, img2 from bvid order by RAND() limit 1;";
     $res = mysqli_query($link, $sql);
@@ -50,6 +65,10 @@
         $url2 = $result["url2"];
         $img2 = $result["img2"];
     }
+
+
+
+
 
     $sql = "insert into bvid values ( " . 
            "'" . $mysql['title'] . "', " .
