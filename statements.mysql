@@ -1,0 +1,35 @@
+
+
+Running <leader>sel here should magically connect to the machinesentience mysql database
+
+show tables
+
+select * from yar;
+
+select * from speed_learn_questions limit 50;
+
+
+select * from bvid;
+
+create table bvid(
+    title1 varchar(600), 
+    url1 varchar(300), 
+    img1 varchar(100), 
+    title2 varchar(600), 
+    url2 varchar(300), 
+    img2 varchar(100), 
+    votes int);
+
+
+insert into bvid values ('Fransis Derelle & CRaymak - Ember (feat. HVDES)', 
+  'https://www.youtube.com/watch?v=HD4WthE414k', 
+  'ember.jpg', 
+  'The Living Universe - Documentary about Consciousness and Reality | Waking Cosmos',
+  'https://www.youtube.com/watch?v=WSDnRbxGlFw', 
+  'universe_is_alive.jpg', 1);
+
+drop table bvid;
+
+ALTER TABLE bvid ADD `date` date;
+
+
