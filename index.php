@@ -14,7 +14,7 @@
     if (!mysqli_select_db($link, $dbname)) {
       echo 'Could not select database, big problem'; exit;
     }
-   
+
     function get_bundle($link){ 
 
         $sql = "select title1, url1, img1, title2, url2, img2 from bvid order by RAND() limit 1;";

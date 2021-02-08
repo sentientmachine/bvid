@@ -15,8 +15,7 @@
       echo 'Could not select database, big problem'; exit;
     }
 
-
-
+    echo "1";
     $mysql = array();
     $mysql['url1'] = $_POST['url1'];
     $mysql['url2'] = $_POST['url2'];
@@ -26,6 +25,7 @@
     $mysql['img2'] = $_POST['img2'];
 
     
+    echo "2";
     #The two urls handed to us might not be in the bvid table because the arrangement is brand new.
     #and if so, that means we need to insert it.
 
@@ -46,7 +46,7 @@
 
     $result_set_to_get_count = mysqli_query($link, $sql);
     $question_count = mysqli_num_rows($result_set_to_get_count);
-    //print("question_count: '" . $question_count. "'");
+    print("question_count: '" . $question_count. "'");
 
     if ($question_count > 0){
         //$sql = "update bvid set votes = votes+1 where 1=1";
@@ -54,6 +54,7 @@
                "where url1 = '" . $mysql['url1'] . "' and url2 = '" . $mysql['url2'] . "';";
     
         mysqli_query($link, $sql);
+
     }
     else{
         $sql = "insert into bvid values ( " . 
@@ -61,7 +62,7 @@
                "'" . $mysql['url1'] . "', " .
                "'" . $mysql['img1'] . "', " .
                "'" . $mysql['title2'] . "', " .
-               "'" . $mysql['url2'] . ", " .
+               "'" . $mysql['url2'] . "', " .
                "'" . $mysql['img2'] . "', 1); ";
     
         mysqli_query($link, $sql);
@@ -70,7 +71,7 @@
 
     #when done go back to index.php
 
-    echo "<script type='text/javascript'> document.location = 'index.php';</script>";
+    #echo "<script type='text/javascript'> document.location = 'index.php';</script>";
 ?>
 
 

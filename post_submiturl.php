@@ -15,35 +15,35 @@
       echo 'Could not select database, big problem'; exit;
     }
 
-
-
     $mysql = array();
-
-    //$mysql['title1'] = $_POST['title1'];
-    //$mysql['title2'] = $_POST['title2'];
-    //$mysql['url1'] = $_POST['url1'];
-    //$mysql['url2'] = $_POST['url2'];
-    //$mysql['img1'] = $_POST['img1'];
-    //$mysql['img2'] = $_POST['img2'];
-  
-    
-    
     $mysql['title'] = $_POST['title'];
     $mysql['url_text'] = $_POST['url_text'];
     $mysql['img_name'] = $_POST['img_name'];
 
-
     #TODO: confirm that the URL is not already submitted
+
     #TODO: Do a basic sniff test to see if the youtube url is valid.
 
+    function pluck_youtube_id($url){
+        $matches = array();
+        if (preg_match('/v=[a-zA-Z0-9_-]+/i', $url, $matches)) { }
+        $haystack = $matches[0];
+        $needle = "v=";
+        $pos = strpos($haystack, $needle);
+        $replace = '';
+        if ($pos !== false) {
+            $newstring = substr_replace($haystack, $replace, $pos, strlen($needle));
+        }
+        return $newstring;
+    }
+
     #TODO: use regex to pluck out the 11 alphanumeric character sequence code from $mysql['url_text'] like uIMfbWnpeU0
-    $alphanumeric_id = 
+    $alphanumeric_id = pluck_youtube_id($mysql['url_text']);
 
     #TODO: get the youtube title using this strategy:
     $content = file_get_contents("http://youtube.com/get_video_info?video_id=". $alphanumeric_id);
     parse_str($content, $ytarr);
     echo $ytarr['title'];
-
 
     #TODO: Fetch the youtube image by creating this URL: 'http://i3.ytimg.com/vi/uIMfbWnpeU0/maxresdefault.jpg'
 
