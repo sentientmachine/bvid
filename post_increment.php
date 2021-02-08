@@ -30,7 +30,7 @@
     #and if so, that means we need to insert it.
 
     $sql = "select url1 from bvid " . 
-           "where url1 = '" . $mysql['url1'] . "' and url2 = '" . $mysql['url1'] . "';";
+           "where url1 = '" . $mysql['url1'] . "' and url2 = '" . $mysql['url2'] . "';";
 
     $res = mysqli_query($link, $sql);
 

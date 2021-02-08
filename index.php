@@ -45,7 +45,7 @@
         $html_payload .= '    <input size=10 type="hidden" name="url2" value="' . $url2 . '">';
         $html_payload .= '    <input size=10 type="hidden" name="img1" value="' . $img1 . '">';
         $html_payload .= '    <input size=10 type="hidden" name="img2" value="' . $img2 . '">';
-        $html_payload .= '    <input type="submit" class="button" name="url1" value="This one"/>';
+        $html_payload .= '    <input type="submit" class="button" name="submiturl1" value="This one"/>';
         $html_payload .= '</form></div>';
         $html_payload .= '<br>';
 
@@ -62,7 +62,7 @@
         $html_payload .= '    <input size=10 type="hidden" name="url2" value="' . $url1 . '">';
         $html_payload .= '    <input size=10 type="hidden" name="img1" value="' . $img1 . '">';
         $html_payload .= '    <input size=10 type="hidden" name="img2" value="' . $img2 . '">';
-        $html_payload .= '    <input type="submit" class="button" name="url2" value="This one"/>';
+        $html_payload .= '    <input type="submit" class="button" name="submiturl2" value="This one"/>';
         $html_payload .= '</form></div>';
 
 
