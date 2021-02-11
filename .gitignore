@@ -3,6 +3,9 @@
 .my.cnf
 any_password_file
 
+
+inserts.mysql
+
 #Never store the .git directory or anything underneath it, it usually doesn't, but this forces
 .git/
 

@@ -4,31 +4,38 @@
 
 #now the button should do an insert.
 
-
 show tables
 
-select url1, votes from bvid
+select * from bvid order by votes desc
+
+delete from bvid where url1='https://www.youtube.com/watch?v=H_COufv7OlQ&list=RDMMH_COufv7OlQ&start_radio=1'
+
+
+
+
+
+
 select * from bvid
 
-create table bvid(
-    title1 varchar(600), 
-    url1 varchar(300), 
-    img1 varchar(100), 
-    title2 varchar(600), 
-    url2 varchar(300), 
-    img2 varchar(100), 
-    votes int);
+
+delete from bvid where 1=1;
+
+insert into bvid (title1) select title from s1
 
 
 insert into bvid values ('Fransis Derelle & CRaymak - Ember (feat. HVDES)', 
-  'https://www.youtube.com/watch?v=HD4WthE414k', 
+  'https://www.youtube.com/watch?v=XItLENGzLJg', 
   'ember.jpg', 
   'The Living Universe - Documentary about Consciousness and Reality | Waking Cosmos',
-  'https://www.youtube.com/watch?v=WSDnRbxGlFw', 
+  'https://www.youtube.com/watch?v=HD4WthE414k', 
   'universe_is_alive.jpg', 1);
 
 drop table bvid;
 
-ALTER TABLE bvid ADD `date` date;
 
+
+delete from bvid where 1=1;
+insert into bvid (title1, url1, title2, url2, votes) select s1.title, s1.url, s2.title, s2.url,1 from s1, s1 as s2 where s1.title != s2.title
+
+select * from bvid;
 

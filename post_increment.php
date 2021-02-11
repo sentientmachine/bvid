@@ -71,7 +71,7 @@
 
     #when done go back to index.php
 
-    #echo "<script type='text/javascript'> document.location = 'index.php';</script>";
+    echo "<script type='text/javascript'> document.location = 'index.php';</script>";
 ?>
 
 
