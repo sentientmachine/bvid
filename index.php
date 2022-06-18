@@ -78,6 +78,10 @@
         $sql = "select title1, url1, img1, title2, url2, img2 from bvid order by RAND() limit 1;";
         $res = mysqli_query($link, $sql);
     
+
+
+
+    
         if (!$res){
           echo "DB Error, could not query the database\nMySQL Error:";
           echo mysqli_error(); exit();

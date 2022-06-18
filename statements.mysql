@@ -6,12 +6,14 @@
 
 show tables
 
-select * from bvid order by votes desc
+select * from bvid order by votes desc limit 9000;
+
 
 delete from bvid where url1='https://www.youtube.com/watch?v=H_COufv7OlQ&list=RDMMH_COufv7OlQ&start_radio=1'
 
 
-
+delete from bvid where title1 like '%5 Tricks F1 drivers use to go faster by Driver61%';
+delete from bvid where title2 like '%5 Tricks F1 drivers use to go faster by Driver61%';
 
 
 
